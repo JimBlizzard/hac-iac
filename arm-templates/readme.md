@@ -1,6 +1,7 @@
 # Readme
 
 OpenHack docs: <https://github.com/microsoft/WhatTheHack/blob/master/011-InfraAsCode-ARM-DSC/Student>
+
 See GitHub <https://github.com/JimBlizzard/hack-iac>
 
 ## Challenge 1
