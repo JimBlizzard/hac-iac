@@ -18,3 +18,4 @@ From: <https://github.com/microsoft/WhatTheHack/blob/master/011-InfraAsCode-ARM-
 
 - Handy CIDR reference: <https://ipduh.com/ip/cidr/?172.0.0.0/16>
 - Azure quickstart templates (ARM): <https://github.com/Azure/azure-quickstart-templates>
+- Azure ARM template reference: <https://docs.microsoft.com/en-us/azure/templates/>
