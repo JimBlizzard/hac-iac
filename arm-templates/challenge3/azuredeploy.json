@@ -1,0 +1,102 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "Storage Account Name"
+            },
+            "minLength": 3,
+            "maxLength": 24
+        },
+        "vnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "Virtual Network Name"
+            }
+        },
+        "vnetAddressSpace": {
+           "type": "string",
+           "metadata": {
+                "description": "Vnet Address Space"
+            }
+        },
+        "subnet1name": {
+            "type": "string",
+            "metadata": {
+                "description": "Subnet-1 name"
+            }
+        },
+        "subnet2name": {
+            "type": "string",
+            "metadata": {
+                "description": "Subnet-2 name"
+            }
+        },
+        "subnet1AddressPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Subnet1 Address Prefix"
+            }
+        },
+        "subnet2AddressPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Subnet2 Address Prefix"
+            }
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('storageAccountName')]",
+            "apiVersion": "2019-06-01",
+            "tags": {
+                "displayName": "blizzstorage01"
+            },
+            "location": "[resourceGroup().location]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('vnetName')]",
+            "apiVersion": "2018-08-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "[parameters('vnetName')]"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('vnetAddressSpace')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[parameters('subnet1name')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('subnet1AddressPrefix')]"
+                        }
+                    },
+                    {
+                        "name": "[parameters('subnet2name')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('subnet2AddressPrefix')]"
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": [],
+                "enableDdosProtection": false,
+                "enableVmProtection": false
+            }
+        }
+    ],
+    "outputs": {}
+}
