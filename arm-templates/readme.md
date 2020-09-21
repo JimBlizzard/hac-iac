@@ -10,7 +10,8 @@ This is from WhatTheHack <https://github.com/microsoft/WhatTheHack/blob/master/0
 
 ## References
 
-Good guidance here: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code?tabs=CLI>
+- Good guidance here: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code?tabs=CLI>
+- Azure quickstart templates (ARM): <https://github.com/Azure/azure-quickstart-templates>
 
 ## Challenge 2
 
