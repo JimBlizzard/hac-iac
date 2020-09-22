@@ -10,14 +10,14 @@ Instructions from <https://docs.microsoft.com/en-us/azure/azure-resource-manager
 
 #### 1. Create an arm template
 
-1. Create an ARM template - in an empty file named ```azuredeploy.json```, type ```arm``` and select ```arm!``` to crate a template scoped for an Azure resource group deployment
+1. Create an ARM template - in an empty file named ```template.json```, type ```arm``` and select ```arm!``` to crate a template scoped for an Azure resource group deployment
 1. Place the cursor in the template *resources* block, type in ```storage```, and select the *arm-storage* snippet.
 
 #### 2. Add template parameters
 
-1. Place your cursor in the parameters block, add a carriage return, type ", and then select the new-parameter snippet. This action adds a generic parameter to the template.
-1. Now, on the storage resource, update the name property to use the parameter. To do so, remove the current name. Enter a double quote and an opening square bracket [, which produces a list of ARM template functions. Select parameters from the list.
-1. Entering a single quote ' inside of the round brackets produces a list of all parameters defined in the template, in this case, storageAccountName. Select the parameter
+1. Place your cursor in the **parameters block, add a carriage return, type "**template, and then select the new-parameter snippet. This action adds a generic parameter to the template.
+1. Now, on the storage resource, **update the name property to use the parameter**. To do so, remove the current name. **Enter a double quote and an opening square bracket [**, which produces a list of ARM template functions. Select parameters from the list.
+1. Entering **a single quote ' inside of the round brackets** produces a list of all parameters defined in the template, in this case, storageAccountName. Select the parameter
 
 #### 3. Create a parameter file
 
