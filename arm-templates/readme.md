@@ -29,7 +29,6 @@ Instructions from <https://docs.microsoft.com/en-us/azure/azure-resource-manager
 
 This is from WhatTheHack <https://github.com/microsoft/WhatTheHack/blob/master/011-InfraAsCode-ARM-DSC/Student/ARM-Challenge-01.md>
 
-
 ### Challenge 1 References
 
 - Good guidance here: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code?tabs=CLI>
@@ -51,3 +50,5 @@ From: <https://github.com/microsoft/WhatTheHack/blob/master/011-InfraAsCode-ARM-
 ### Challenge 3 References
 
 - Understanding ARM resource IDs: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-functions-resource#resourceid>
+
+Rather than puzzling through all the JSON needed to create the network security group, subnet, etc, I used to the portal to create the resources and downloaded the template. Then I deleted the resource group and deployed it from a bash shell using the Azure CLI.
