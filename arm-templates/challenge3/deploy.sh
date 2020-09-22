@@ -2,6 +2,6 @@
 
 az login 
 
-az group create -n blizz-arm-vscode -l eastus2
+az group create -n blizzArmVscodeRG -l eastus2
 
-az deployment group create -g blizz-arm-vscode --template-file template.json --parameters parameters.json
+az deployment group create -g blizzArmVscodeRG --template-file template.json --parameters parameters.json
