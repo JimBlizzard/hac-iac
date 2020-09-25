@@ -2,6 +2,8 @@
 
 az login 
 
-az group create -n blizzArmVsCodeRG -l eastus2
+RG=blizzArmVsCodeRG
 
-az deployment group create -g blizzArmVsCodeRG --template-file template.json --parameters parameters.json
+az group create -n $RG -l eastus2
+
+az deployment group create -g $RG --template-file template.json --parameters parameters.json
