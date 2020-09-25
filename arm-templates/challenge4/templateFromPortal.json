@@ -1,0 +1,302 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualNetworks_vnet2_name": {
+            "defaultValue": "vnet2",
+            "type": "String"
+        },
+        "storageAccounts_blizzstorage1_name": {
+            "defaultValue": "blizzstorage1",
+            "type": "String"
+        },
+        "networkSecurityGroups_myNsgName_name": {
+            "defaultValue": "myNsgName",
+            "type": "String"
+        },
+        "applicationSecurityGroups_asgWebServers_name": {
+            "defaultValue": "asgWebServers",
+            "type": "String"
+        },
+        "applicationSecurityGroups_asgMgmtServers_name": {
+            "defaultValue": "asgMgmtServers",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/applicationSecurityGroups",
+            "apiVersion": "2020-05-01",
+            "name": "[parameters('applicationSecurityGroups_asgMgmtServers_name')]",
+            "location": "eastus2",
+            "properties": {
+                "provisioningState": "Succeeded"
+            }
+        },
+        {
+            "type": "Microsoft.Network/applicationSecurityGroups",
+            "apiVersion": "2020-05-01",
+            "name": "[parameters('applicationSecurityGroups_asgWebServers_name')]",
+            "location": "eastus2",
+            "properties": {
+                "provisioningState": "Succeeded"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-05-01",
+            "name": "[parameters('virtualNetworks_vnet2_name')]",
+            "location": "eastus2",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "172.18.0.0/16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "mySubnet",
+                        "properties": {
+                            "addressPrefix": "172.18.0.0/24",
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": [],
+                "enableDdosProtection": false,
+                "enableVmProtection": false
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "name": "[parameters('storageAccounts_blizzstorage1_name')]",
+            "location": "eastus2",
+            "tags": {
+                "displayName": "blizzstorage01"
+            },
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": true,
+                "encryption": {
+                    "services": {
+                        "file": {
+                            "keyType": "Account",
+                            "enabled": true
+                        },
+                        "blob": {
+                            "keyType": "Account",
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                },
+                "accessTier": "Hot"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-05-01",
+            "name": "[concat(parameters('virtualNetworks_vnet2_name'), '/mySubnet')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet2_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "172.18.0.0/24",
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/blobServices",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(parameters('storageAccounts_blizzstorage1_name'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_blizzstorage1_name'))]"
+            ],
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "properties": {
+                "cors": {
+                    "corsRules": []
+                },
+                "deleteRetentionPolicy": {
+                    "enabled": false
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/fileServices",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(parameters('storageAccounts_blizzstorage1_name'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_blizzstorage1_name'))]"
+            ],
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "properties": {
+                "cors": {
+                    "corsRules": []
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/queueServices",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(parameters('storageAccounts_blizzstorage1_name'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_blizzstorage1_name'))]"
+            ],
+            "properties": {
+                "cors": {
+                    "corsRules": []
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/tableServices",
+            "apiVersion": "2019-06-01",
+            "name": "[concat(parameters('storageAccounts_blizzstorage1_name'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_blizzstorage1_name'))]"
+            ],
+            "properties": {
+                "cors": {
+                    "corsRules": []
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2020-05-01",
+            "name": "[parameters('networkSecurityGroups_myNsgName_name')]",
+            "location": "eastus2",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('applicationSecurityGroups_asgWebServers_name'))]",
+                "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('applicationSecurityGroups_asgMgmtServers_name'))]"
+            ],
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "Allow-web-all",
+                        "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 100,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [
+                                "80",
+                                "443"
+                            ],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": [],
+                            "destinationApplicationSecurityGroups": [
+                                {
+                                    "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('applicationSecurityGroups_asgWebServers_name'))]"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "Allow-RDP-All",
+                        "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "3389",
+                            "sourceAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 110,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": [],
+                            "destinationApplicationSecurityGroups": [
+                                {
+                                    "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('applicationSecurityGroups_asgMgmtServers_name'))]"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "apiVersion": "2020-05-01",
+            "name": "[concat(parameters('networkSecurityGroups_myNsgName_name'), '/Allow-RDP-All')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_myNsgName_name'))]",
+                "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('applicationSecurityGroups_asgMgmtServers_name'))]"
+            ],
+            "properties": {
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "3389",
+                "sourceAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 110,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": [],
+                "destinationApplicationSecurityGroups": [
+                    {
+                        "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('applicationSecurityGroups_asgMgmtServers_name'))]"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "apiVersion": "2020-05-01",
+            "name": "[concat(parameters('networkSecurityGroups_myNsgName_name'), '/Allow-web-all')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_myNsgName_name'))]",
+                "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('applicationSecurityGroups_asgWebServers_name'))]"
+            ],
+            "properties": {
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "sourceAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 100,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [
+                    "80",
+                    "443"
+                ],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": [],
+                "destinationApplicationSecurityGroups": [
+                    {
+                        "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('applicationSecurityGroups_asgWebServers_name'))]"
+                    }
+                ]
+            }
+        }
+    ]
+}
