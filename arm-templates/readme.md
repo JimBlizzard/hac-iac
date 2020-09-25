@@ -1,5 +1,7 @@
 # Readme
 
+Note: See this excellent Sample ARM template architecture created by Adam P: <https://github.com/JimBlizzard/Azure-Sample-ARM-Template-Architecture>
+
 OpenHack docs: <https://github.com/microsoft/WhatTheHack/blob/master/011-InfraAsCode-ARM-DSC/Student>
 
 See GitHub <https://github.com/JimBlizzard/hack-iac>
@@ -56,3 +58,22 @@ Rather than puzzling through all the JSON needed to create the network security 
 The ARM template downloaded from the portal contains an extra (and seemingly redundant) definition for the NSG security rules as an indepentent type at the resource root level. The security rules are embedded in the type definition for the NSG itself. I deleted the "independent" security rule definitions, leaving the defintions embedded in the NSG, and the template deployed the entire resource group successfully.
 
 I've included both the modified template (template.json) and the original template that I downloaded from the portal (templateFromPortal.json) for reference.
+
+## Challenge 4 - Secret values with Key Vault
+
+From: <https://github.com/microsoft/WhatTheHack/blob/master/011-InfraAsCode-ARM-DSC/Student/ARM-Challenge-04.md>
+
+### Description
+
+Your challenge, should you accept it, is to:
+
+- Create an Azure Key Vault and store a secret value in it by running one of the provided KeyVault scripts of your choice. You can find the scripts in the Resources folder for ARM-Challenge-04:
+
+```txt
+    create-key-vault-CLI.sh - Azure CLI
+    create-key-vault-PS.ps1 - PowerShell
+```
+
+- Retrieve the secret value from Azure Key Vault and pass it into your template as a parameter without having the value exposed as plain text at any point in time!
+
+Created this key vault: "vaultUri": "https://blizzarmvscodergkv.vault.azure.net/"
