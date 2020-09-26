@@ -1,6 +1,11 @@
 # Readme
 
-Note: See this excellent Sample ARM template architecture created by Adam P: <https://github.com/JimBlizzard/Azure-Sample-ARM-Template-Architecture>
+## References
+
+- See this excellent Sample ARM template architecture created by Adam P. It includes nested templates: <https://github.com/JimBlizzard/Azure-Sample-ARM-Template-Architecture>
+- Accessing Key Vault secrets from ARM templates (includes a good section / examples of nested templates): <https://www.linkedin.com/pulse/accessing-key-vault-secrets-from-arm-templates-paul-towler/>
+- Nest ARM templtes: <https://www.linkedin.com/pulse/nested-arm-templates-paul-towler/>
+- Use Azure Key Vault to pass secure parameter value during deployment: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/key-vault-parameter?tabs=azure-cli>
 
 OpenHack docs: <https://github.com/microsoft/WhatTheHack/blob/master/011-InfraAsCode-ARM-DSC/Student>
 
