@@ -8,6 +8,9 @@
 - **Nest ARM templates**: <https://www.linkedin.com/pulse/nested-arm-templates-paul-towler/>
 - **Set resource deployment order. Tutorial**: create ARM templates with **dependent resources**: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-create-templates-with-dependent-resources?tabs=CLI>
 - Use Azure Key Vault to pass secure parameter value during deployment. Has an example of using **Static and Dynamic IDs**. **Dynamic IDs involves using a linked template**: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/key-vault-parameter?tabs=azure-cli>
+- **ARM template extension for VS Code**: <https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools>
+
+## The hack
 
 OpenHack docs: <https://github.com/microsoft/WhatTheHack/blob/master/011-InfraAsCode-ARM-DSC/Student>
 
