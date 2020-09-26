@@ -1,24 +1,24 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "networkSecurityGroups_myNsg_name": {
+        "nsgName": {
             "defaultValue": "myNsg",
             "type": "String"
         },
-        "virtualNetworks_myVirtualNetwork2_name": {
+        "vnetName": {
             "defaultValue": "myVirtualNetwork2",
             "type": "String"
         },
-        "storageAccounts_blizzstorageforhack01_name": {
+        "storageAccountName": {
             "defaultValue": "blizzstorageforhack01",
             "type": "String"
         },
-        "applicationSecurityGroups_myAsgWebServers_name": {
+        "securityGroupWebServersName": {
             "defaultValue": "myAsgWebServers",
             "type": "String"
         },
-        "applicationSecurityGroups_myAsgMgmtServers_name": {
+        "securitGroupMgmtServersName": {
             "defaultValue": "myAsgMgmtServers",
             "type": "String"
         }
@@ -28,7 +28,7 @@
         {
             "type": "Microsoft.Network/applicationSecurityGroups",
             "apiVersion": "2020-05-01",
-            "name": "[parameters('applicationSecurityGroups_myAsgMgmtServers_name')]",
+            "name": "[parameters('securitGroupMgmtServersName')]",
             "location": "eastus2",
             "properties": {
                 "provisioningState": "Succeeded"
@@ -37,7 +37,7 @@
         {
             "type": "Microsoft.Network/applicationSecurityGroups",
             "apiVersion": "2020-05-01",
-            "name": "[parameters('applicationSecurityGroups_myAsgWebServers_name')]",
+            "name": "[parameters('securityGroupWebServersName')]",
             "location": "eastus2",
             "properties": {
                 "provisioningState": "Succeeded"
@@ -46,7 +46,7 @@
         {
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2020-05-01",
-            "name": "[parameters('virtualNetworks_myVirtualNetwork2_name')]",
+            "name": "[parameters('vnetName')]",
             "location": "eastus2",
             "properties": {
                 "addressSpace": {
@@ -73,7 +73,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2019-06-01",
-            "name": "[parameters('storageAccounts_blizzstorageforhack01_name')]",
+            "name": "[parameters('storageAccountName')]",
             "location": "eastus2",
             "tags": {
                 "displayName": "blizzstorage01"
@@ -110,9 +110,9 @@
         {
             "type": "Microsoft.Network/virtualNetworks/subnets",
             "apiVersion": "2020-05-01",
-            "name": "[concat(parameters('virtualNetworks_myVirtualNetwork2_name'), '/mySubnet')]",
+            "name": "[concat(parameters('vnetName'), '/mySubnet')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_myVirtualNetwork2_name'))]"
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
             ],
             "properties": {
                 "addressPrefix": "172.18.0.0/24",
@@ -124,9 +124,9 @@
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices",
             "apiVersion": "2019-06-01",
-            "name": "[concat(parameters('storageAccounts_blizzstorageforhack01_name'), '/default')]",
+            "name": "[concat(parameters('storageAccountName'), '/default')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_blizzstorageforhack01_name'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
             ],
             "sku": {
                 "name": "Standard_LRS",
@@ -144,9 +144,9 @@
         {
             "type": "Microsoft.Storage/storageAccounts/fileServices",
             "apiVersion": "2019-06-01",
-            "name": "[concat(parameters('storageAccounts_blizzstorageforhack01_name'), '/default')]",
+            "name": "[concat(parameters('storageAccountName'), '/default')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_blizzstorageforhack01_name'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
             ],
             "sku": {
                 "name": "Standard_LRS",
@@ -161,9 +161,9 @@
         {
             "type": "Microsoft.Storage/storageAccounts/queueServices",
             "apiVersion": "2019-06-01",
-            "name": "[concat(parameters('storageAccounts_blizzstorageforhack01_name'), '/default')]",
+            "name": "[concat(parameters('storageAccountName'), '/default')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_blizzstorageforhack01_name'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
             ],
             "properties": {
                 "cors": {
@@ -174,9 +174,9 @@
         {
             "type": "Microsoft.Storage/storageAccounts/tableServices",
             "apiVersion": "2019-06-01",
-            "name": "[concat(parameters('storageAccounts_blizzstorageforhack01_name'), '/default')]",
+            "name": "[concat(parameters('storageAccountName'), '/default')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_blizzstorageforhack01_name'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
             ],
             "properties": {
                 "cors": {
@@ -187,11 +187,11 @@
         {
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2020-05-01",
-            "name": "[parameters('networkSecurityGroups_myNsg_name')]",
+            "name": "[parameters('nsgName')]",
             "location": "eastus2",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('applicationSecurityGroups_myAsgWebServers_name'))]",
-                "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('applicationSecurityGroups_myAsgMgmtServers_name'))]"
+                "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('securityGroupWebServersName'))]",
+                "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('securitGroupMgmtServersName'))]"
             ],
             "properties": {
                 "securityRules": [
@@ -213,7 +213,7 @@
                             "destinationAddressPrefixes": [],
                             "destinationApplicationSecurityGroups": [
                                 {
-                                    "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('applicationSecurityGroups_myAsgWebServers_name'))]"
+                                    "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('securityGroupWebServersName'))]"
                                 }
                             ]
                         }
@@ -234,7 +234,7 @@
                             "destinationAddressPrefixes": [],
                             "destinationApplicationSecurityGroups": [
                                 {
-                                    "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('applicationSecurityGroups_myAsgMgmtServers_name'))]"
+                                    "id": "[resourceId('Microsoft.Network/applicationSecurityGroups', parameters('securitGroupMgmtServersName'))]"
                                 }
                             ]
                         }

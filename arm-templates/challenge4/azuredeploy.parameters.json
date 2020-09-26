@@ -2,19 +2,19 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "networkSecurityGroups_myNsg_name": {
+        "nsgName": {
             "value": "myNsgName"
         },
-        "virtualNetworks_myVirtualNetwork2_name": {
+        "vnetName": {
             "value": "vnet2"
         },
-        "storageAccounts_blizzstorageforhack01_name": {
+        "storageAccountName": {
             "value": "blizzstorage1"
         },
-        "applicationSecurityGroups_myAsgWebServers_name": {
+        "securityGroupWebServersName": {
             "value": "asgWebServers"
         },
-        "applicationSecurityGroups_myAsgMgmtServers_name": {
+        "securitGroupMgmtServersName": {
             "value": "asgMgmtServers"
         }
     }
