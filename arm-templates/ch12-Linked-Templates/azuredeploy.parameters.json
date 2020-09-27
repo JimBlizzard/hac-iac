@@ -6,7 +6,7 @@
             "value": "a000defaultrg"
         },
         "linkedTemplateUri": {
-            "value": "https://raw.githubusercontent.com/JimBlizzard/hack-iac/trunk/arm-templates/ch12-LinkedTemplates/azuredeploy.storage.json"
+            "value": "https://raw.githubusercontent.com/JimBlizzard/hack-iac/trunk/arm-templates/ch12-Linked-Templates/azuredeploy.storage.json"
         }
     }
 }
