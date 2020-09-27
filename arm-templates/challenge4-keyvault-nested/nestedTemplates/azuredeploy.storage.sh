@@ -4,11 +4,16 @@
 
 # az login
 
-echo "Resource group to use / create?"
-read resourceGroup
+# variables
 today=`date +%Y-%m-%d-%H-%M-%S`
 deploymentName="MyDeployment-$today"
-location="centralus"
+
+echo "rg name?"
+read resourceGroup
+
+echo "location?"
+read location
+
 
 # create resource group
 az group create \
@@ -16,7 +21,6 @@ az group create \
   --location  $location
 
 # deploy the template
-
 az deployment group create \
   --name                 $deploymentName \
   --resource-group       $resourceGroup \
