@@ -1,7 +1,7 @@
 #!bin/bash
 
 # Login
-az login
+# az login
 
 
 # Script parameters
