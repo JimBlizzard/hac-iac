@@ -17,3 +17,16 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'demoRGConnection'
+    subscriptionId: 'ea62567d-aa80-4688-b36b-04fb19d3342f'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: '000DemoRG'
+    location: 'Central US'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/JimBlizzard/hack-iac/trunk/arm-templates/ch01-02-simple/azuredeploy.json'
+    csmParametersFileLink: 'https://raw.githubusercontent.com/JimBlizzard/hack-iac/trunk/arm-templates/ch01-02-simple/azuredeploy.parameters.json'
+    deploymentMode: 'Incremental'
