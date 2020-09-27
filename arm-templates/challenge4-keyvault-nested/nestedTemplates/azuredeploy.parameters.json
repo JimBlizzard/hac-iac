@@ -7,6 +7,9 @@
         },
         "linkedTemplateUri": {
             "value": "https://raw.githubusercontent.com/JimBlizzard/hack-iac/trunk/arm-templates/challenge4-keyvault-nested/nestedTemplates/azuredeploy.storage.json"
+        },
+        "location": {
+            "value": "centralus"
         }
         
     }

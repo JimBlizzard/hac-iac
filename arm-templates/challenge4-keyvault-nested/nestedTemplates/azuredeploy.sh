@@ -20,7 +20,7 @@ az group create \
   --location    $location
 
 # Deploy the ARM template
-az group deployment create \
+az deployment group create \
   --name                 $deploymentName \
   --resource-group       $resourceGroup \
   --template-file        azuredeploy.json \
