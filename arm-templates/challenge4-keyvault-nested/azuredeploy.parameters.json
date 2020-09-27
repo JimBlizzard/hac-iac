@@ -3,19 +3,19 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "nsgName": {
-            "value": "myNsgName"
+            "value": "myNsgName4a"
         },
         "vnetName": {
-            "value": "vnet2"
+            "value": "vnet4a"
         },
         "storageAccountName": {
-            "value": "blizzstorage1"
+            "value": "blizzstorage4a"
         },
         "securityGroupWebServersName": {
-            "value": "asgWebServers"
+            "value": "asgWebServers4a"
         },
         "securitGroupMgmtServersName": {
-            "value": "asgMgmtServers"
+            "value": "asgMgmtServers4a"
         }
     }
 }
