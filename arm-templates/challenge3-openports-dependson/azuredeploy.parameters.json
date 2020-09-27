@@ -3,19 +3,19 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "networkSecurityGroups_myNsg_name": {
-            "value": "myNsgName"
+            "value": "myNsgName3a"
         },
         "virtualNetworks_myVirtualNetwork2_name": {
-            "value": "vnet2"
+            "value": "vnet3a"
         },
         "storageAccounts_blizzstorageforhack01_name": {
-            "value": "blizzstorage1"
+            "value": "blizzstorage3a"
         },
         "applicationSecurityGroups_myAsgWebServers_name": {
-            "value": "asgWebServers"
+            "value": "asgWebServers3a"
         },
         "applicationSecurityGroups_myAsgMgmtServers_name": {
-            "value": "asgMgmtServers"
+            "value": "asgMgmtServers3a"
         }
     }
 }
