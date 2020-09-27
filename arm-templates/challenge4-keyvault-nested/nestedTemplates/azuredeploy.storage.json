@@ -8,12 +8,6 @@
           "description": "Specify the storage account name."
         }
       },
-      "location": {
-        "type": "string",
-        "metadata": {
-          "description": "Specify a location for the resources."
-        }
-      },
       "storageSKU": {
         "type": "string",
         "defaultValue": "Standard_LRS",
@@ -37,7 +31,7 @@
         "type": "Microsoft.Storage/storageAccounts",
         "apiVersion": "2019-04-01",
         "name": "[parameters('storageAccountName')]",
-        "location": "[parameters('location')]",
+        "location": "[resourceGroup().location]",
         "sku": {
           "name": "[parameters('storageSKU')]"
         },
