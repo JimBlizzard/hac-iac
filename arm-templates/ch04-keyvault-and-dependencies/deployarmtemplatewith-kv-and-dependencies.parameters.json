@@ -5,7 +5,7 @@
     "adminUsername": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/ea62567d-aa80-4688-b36b-04fb19d3342f/resourceGroups/000blizzarmrg/providers/Microsoft.KeyVault/vaults/blizzarmrgkv"
+          "id": "/subscriptions/ea62567d-aa80-4688-b36b-04fb19d3342f/resourceGroups/000blizzkvrg/providers/Microsoft.KeyVault/vaults/blizzkvrgkv"
         },
         "secretName": "adminUserName"
       }
@@ -13,7 +13,7 @@
     "adminPassword": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/ea62567d-aa80-4688-b36b-04fb19d3342f/resourceGroups/000blizzarmrg/providers/Microsoft.KeyVault/vaults/blizzarmrgkv"
+          "id": "/subscriptions/ea62567d-aa80-4688-b36b-04fb19d3342f/resourceGroups/000blizzkvrg/providers/Microsoft.KeyVault/vaults/blizzkvrgkv"
         },
         "secretName": "adminPassword"
       }
@@ -21,7 +21,7 @@
     "dnsLabelPrefix": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/ea62567d-aa80-4688-b36b-04fb19d3342f/resourceGroups/000blizzarmrg/providers/Microsoft.KeyVault/vaults/blizzarmrgkv"
+          "id": "/subscriptions/ea62567d-aa80-4688-b36b-04fb19d3342f/resourceGroups/000blizzkvrg/providers/Microsoft.KeyVault/vaults/blizzkvrgkv"
         },
         "secretName": "dnsLabelPrefix"
       }
