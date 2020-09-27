@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ea62567d-aa80-4688-b36b-04fb19d3342f/resourceGroups/000blizzarmrg/providers/Microsoft.KeyVault/vaults/blizzarmrgkv"
+        },
+        "secretName": "adminUserName"
+      }
+    },
+    "adminPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ea62567d-aa80-4688-b36b-04fb19d3342f/resourceGroups/000blizzarmrg/providers/Microsoft.KeyVault/vaults/blizzarmrgkv"
+        },
+        "secretName": "adminPassword"
+      }
+    },
+    "dnsLabelPrefix": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/ea62567d-aa80-4688-b36b-04fb19d3342f/resourceGroups/000blizzarmrg/providers/Microsoft.KeyVault/vaults/blizzarmrgkv"
+        },
+        "secretName": "dnsLabelPrefix"
+      }
+    }
+  }
+}
