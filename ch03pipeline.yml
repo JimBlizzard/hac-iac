@@ -21,6 +21,6 @@ steps:
     resourceGroupName: '000ch03pipe'
     location: 'Central US'
     templateLocation: 'URL of the file'
-    csmFileLink: 'https://github.com/JimBlizzard/hack-iac/blob/trunk/arm-templates/ch03-openports-dependson/azuredeploy.json'
+    csmFileLink: 'https://raw.githubusercontent.com/JimBlizzard/hack-iac/trunk/arm-templates/ch03-openports-dependson/azuredeploy.json'
     csmParametersFileLink: 'https://raw.githubusercontent.com/JimBlizzard/hack-iac/trunk/arm-templates/ch03-openports-dependson/azuredeploy.parameters.json'
     deploymentMode: 'Incremental'
