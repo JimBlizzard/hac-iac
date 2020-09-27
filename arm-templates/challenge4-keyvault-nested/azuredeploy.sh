@@ -3,11 +3,14 @@
 az login 
 
 # Script parameters 
-rg="blizzArmVsCodeRG"
-location="eastus2"
 today=`date +%Y-%m-%d-%H-%M-%S`
 deploymentName="MyDeployment-$today"
 
+echo "rg name?"
+read rg
+
+echo "location?"
+read location 
 
 # Create resource group 
 az group create \
