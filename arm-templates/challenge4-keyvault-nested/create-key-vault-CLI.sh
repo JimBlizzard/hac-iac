@@ -9,7 +9,7 @@
 # Pick a location that is the same region where you are deploying your template!
 declare iacHackNamePrefix="000"
 declare iacHackName="blizzarmrg"
-declare location="eastus2"
+declare location="centralus"
 
 #Step 2: Create ResourceGroup after updating the location to one of your choice.
 #Create a new Resource Group with YOUR name!

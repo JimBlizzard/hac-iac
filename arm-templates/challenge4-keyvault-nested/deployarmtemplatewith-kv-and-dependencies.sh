@@ -1,6 +1,6 @@
 #!bin/bash
 
-az login 
+# az login 
 
 # Script parameters 
 today=`date +%Y-%m-%d-%H-%M-%S`
@@ -22,6 +22,6 @@ az group create \
 az deployment group create \
   --name            $deploymentName \
   --resource-group  $rg \
-  --template-file   deployarmtemplatewithdependencies.json \
-  --parameters      deployarmtemplatewithdependencies.parameters.json \
+  --template-file   deployarmtemplatewith-kv-and-dependencies.json \
+  --parameters      deployarmtemplatewith-kv-and-dependencies.parameters.json \
   --mode            Incremental
