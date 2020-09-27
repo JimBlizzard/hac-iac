@@ -7,17 +7,18 @@
 
 #Step 1: Use a name with all characters LOWERCASE.  Your initials would work well if working in the same sub as others. 
 # Pick a location that is the same region where you are deploying your template!
-declare iacHackName="blizzarmvscoderg"
+declare iacHackNamePrefix="000"
+declare iacHackName="blizzarmrg"
 declare location="eastus2"
 
 #Step 2: Create ResourceGroup after updating the location to one of your choice.
 #Create a new Resource Group with YOUR name!
-az group create --name $iacHackName -l $location
+az group create --name $iacHackNamePrefix$iacHackName -l $location
 
 #Step 3: Create Key Vault and set flag to enable for template deployment with ARM
 declare vaultSuffix="kv"
 declare iacHackVaultName="$iacHackName$vaultSuffix" 
-az keyvault create --name $iacHackVaultName -g $iacHackName -l $location --enabled-for-template-deployment true
+az keyvault create --name $iacHackVaultName -g $iacHackNamePrefix$iacHackName -l $location --enabled-for-template-deployment true
 
 #Step 4: Add password as a secret.  Use a password that meets the azure pwd police like P@ssw0rd123!!
 read -s -p "Password for your VMs: " PASSWORD

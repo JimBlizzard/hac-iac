@@ -9,6 +9,9 @@
 - **Set resource deployment order. Tutorial**: create ARM templates with **dependent resources**: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-create-templates-with-dependent-resources?tabs=CLI>
 - Use Azure Key Vault to pass secure parameter value during deployment. Has an example of using **Static and Dynamic IDs**. **Dynamic IDs involves using a linked template**: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/key-vault-parameter?tabs=azure-cli>
 - **ARM template extension for VS Code**: <https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools>
+- **Troubleshoot template deployment**: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-troubleshoot>
+- **Key Vault usage examples**: <https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples>
+- **Integrate key vault in your ARM template deployment**: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-use-key-vault>
 
 ## The hack
 
@@ -86,4 +89,24 @@ Your challenge, should you accept it, is to:
 
 - Retrieve the secret value from Azure Key Vault and pass it into your template as a parameter without having the value exposed as plain text at any point in time!
 
-Created this key vault: "vaultUri": "https://blizzarmvscodergkv.vault.azure.net/"
+I created this key vault: "vaultUri": "https://blizzarmvscodergkv.vault.azure.net/"
+
+To get the metadata (such as id, location, etc) for a key vault, run something like this:
+
+```bash
+declare iacHackName="blizzarmrg"
+declare vaultSuffix="kv"
+declare iacHackVaultName="$iacHackName$vaultSuffix"
+az keyvault show --name $iacHackVaultName -o json
+```
+
+#### Key Vault References
+
+- Key Vault usage examples: <https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples>
+- Integrate key vault in your ARM template deployment: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-use-key-vault>
+
+### Linked templates
+
+```bash az cli
+
+```
