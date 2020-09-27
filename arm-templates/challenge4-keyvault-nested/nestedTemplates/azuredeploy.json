@@ -42,9 +42,6 @@
         "parameters": {
           "storageAccountName": {
             "value": "[variables('storageAccountName')]"
-          },
-          "location": {
-            "value": "[resourceGroup().location]"
           }
         }
       }
