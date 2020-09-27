@@ -5,10 +5,14 @@ az login
 
 
 # Script parameters
-resourceGroup="00001TemplateDeployRG"
-location="centralus"
 today=`date +%Y-%m-%d-%H-%M-%S`
 deploymentName="MyDeployment-$today"
+
+echo "rg name?"
+read resourceGroup
+
+echo "location?"
+read location
 
 # Create resource group
 az group create \
