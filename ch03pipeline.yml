@@ -1,0 +1,28 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+name: $(TeamProject)_$(Build.DefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+steps:
+
+# Deploy template that opens ports and uses depends on
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: '000ch03rg-sp'
+    subscriptionId: 'ea62567d-aa80-4688-b36b-04fb19d3342f'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: '000ch03rg'
+    location: 'Central US'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/JimBlizzard/hack-iac/trunk/arm-templates/ch03-openports-dependson/azuredeploy.json'
+    csmParametersFileLink: 'https://raw.githubusercontent.com/JimBlizzard/hack-iac/trunk/arm-templates/ch03-openports-dependson/azuredeploy.parameters.json'
+    deploymentMode: 'Incremental'
