@@ -1,7 +1,28 @@
 #!bin/bash
 
+# Script parameters
+today=`date +%Y-%m-%d-%H-%M-%S`
+deploymentName="MyDeployment-$today"
+
 az login 
 
-az group create -n blizz-arm-vscode -l eastus2
+echo " "
+echo "azure account is: "
+az account show
 
-az deployment group create -g blizz-arm-vscode --template-file azuredeploy.json --parameters azuredeploy.parameters.json
+echo "rg name?"
+read resourceGroup
+
+echo "location?"
+read location
+
+az group create --name $resourceGroup \
+    --location $location \
+    --debug
+
+az deployment group create \
+    --name $deploymentName \
+    --resource-group $resourceGroup \
+    --template-file azuredeploy.json \
+    --parameters azuredeploy.parameters.json \
+    --debug 

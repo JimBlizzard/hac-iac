@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageAccountName": {
-            "value": "blizzstorageforhack01" 
+            "value": "blizzstorageforhack0011" 
         },
         "vnetName": {
             "value": "blizz-vnet" 
