@@ -6,12 +6,13 @@
 - Tutorial: integrate **Key Vault** in your ARM template deployment: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-use-key-vault>
 - **Accessing Key Vault secrets from ARM templates** (includes a good section / examples of nested templates): <https://www.linkedin.com/pulse/accessing-key-vault-secrets-from-arm-templates-paul-towler/>
 - **Nest ARM templates**: <https://www.linkedin.com/pulse/nested-arm-templates-paul-towler/>
-- **Set resource deployment order. Tutorial**: create ARM templates with **dependent resources**: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-create-templates-with-dependent-resources?tabs=CLI>
-- Use Azure Key Vault to pass secure parameter value during deployment. Has an example of using **Static and Dynamic IDs**. **Dynamic IDs involves using a linked template**: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/key-vault-parameter?tabs=azure-cli>
+- **Set resource deployment order. Tutorial**: Create ARM templates with **dependent resources**: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-create-templates-with-dependent-resources?tabs=CLI>
+- Use Azure Key Vault to pass secure parameter value during deployment of ARM template. Has an example of using **Static and Dynamic IDs**. **Dynamic IDs involves using a linked template**: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/key-vault-parameter?tabs=azure-cli>
+- **Integrate key vault in your ARM template deployment**: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-use-key-vault>
 - **ARM template extension for VS Code**: <https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools>
+- **Use secrets from Azure Key Vault in Azure pipelines**: <https://docs.microsoft.com/en-us/azure/devops/pipelines/release/azure-key-vault?view=azure-devops>
 - **Troubleshoot template deployment**: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-troubleshoot>
 - **Key Vault usage examples**: <https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples>
-- **Integrate key vault in your ARM template deployment**: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-use-key-vault>
 
 ## The hack
 
