@@ -9,7 +9,7 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-name: $(TeamProject)_$(Build.DefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+name: $(TeamProject)..$(Build.DefinitionName)..$(SourceBranchName)..$(Date:yyyyMMdd)$(Rev:.r)
 
 steps:
 - script: echo Hello, world!
