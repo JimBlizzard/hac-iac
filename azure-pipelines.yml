@@ -24,7 +24,7 @@ steps:
   inputs:
     deploymentScope: 'Resource Group'
     azureResourceManagerConnection: '000ch01and02rg-sp'
-    subscriptionId: 'ea62567d-aa80-4688-b36b-04fb19d3342f'
+    subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
     action: 'Create Or Update Resource Group'
     resourceGroupName: '000ch01and02rg'
     location: 'Central US'
