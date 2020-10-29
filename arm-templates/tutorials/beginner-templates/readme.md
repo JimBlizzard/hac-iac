@@ -127,3 +127,30 @@ az deployment group create \
   --parameters storageName="blizzstg00001"
 
 ```
+
+5. Add variables
+
+Docs are here: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-add-variables?tabs=azure-cli>
+
+```bash azure cli
+# create variables
+rgName="00000-blizz-tutorials-rg"
+location="centralus"
+
+echo $rgName
+echo $location
+
+# create resource group
+az group create \
+  --name $rgName \
+  --location $location
+
+templateFile="~/repos/hack-iac/arm-templates/tutorials/beginner-templates/azuredeploy.5.json"
+
+az deployment group create \
+  --name addnamevariable \
+  --resource-group $rgName \
+  --template-file $templateFile \
+  --parameters storagePrefix=blizzstg01 storageSKU=Standard_LRS
+
+```
