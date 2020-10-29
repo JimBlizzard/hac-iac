@@ -154,3 +154,31 @@ az deployment group create \
   --parameters storagePrefix=blizzstg01 storageSKU=Standard_LRS
 
 ```
+
+6. Add outputs
+
+
+Docs are here: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-add-outputs?tabs=azure-cli>
+
+```bash azure cli
+# create variables
+rgName="00000-blizz-tutorials-rg"
+location="centralus"
+
+echo $rgName
+echo $location
+
+# create resource group
+az group create \
+  --name $rgName \
+  --location $location
+
+templateFile="~/repos/hack-iac/arm-templates/tutorials/beginner-templates/azuredeploy.5.json"
+
+az deployment group create \
+  --name addoutpus \
+  --resource-group $rgName \
+  --template-file $templateFile \
+  --parameters storagePrefix=blizzstg01 storageSKU=Standard_LRS
+
+```
