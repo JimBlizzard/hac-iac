@@ -157,7 +157,6 @@ az deployment group create \
 
 6. Add outputs
 
-
 Docs are here: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-add-outputs?tabs=azure-cli>
 
 ```bash azure cli
@@ -173,10 +172,40 @@ az group create \
   --name $rgName \
   --location $location
 
-templateFile="~/repos/hack-iac/arm-templates/tutorials/beginner-templates/azuredeploy.5.json"
+templateFile="~/repos/hack-iac/arm-templates/tutorials/beginner-templates/azuredeploy.6.json"
 
 az deployment group create \
-  --name addoutpus \
+  --name addoutputs \
+  --resource-group $rgName \
+  --template-file $templateFile \
+  --parameters storagePrefix=blizzstg01 storageSKU=Standard_LRS
+
+```
+
+7. Use exported template from the portal
+
+Docs are here: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-export-template?tabs=azure-cli>
+
+Create a template for a web app and use part of its contents to update the existing template from tutorial 6.
+
+```bash azure cli
+
+# create variables
+rgName="00000-blizz-tutorials-rg"
+location="centralus"
+
+echo $rgName
+echo $location
+
+# create resource group
+az group create \
+  --name $rgName \
+  --location $location
+
+templateFile="~/repos/hack-iac/arm-templates/tutorials/beginner-templates/azuredeploy.7.json"
+
+az deployment group create \
+  --name addappserviceplan \
   --resource-group $rgName \
   --template-file $templateFile \
   --parameters storagePrefix=blizzstg01 storageSKU=Standard_LRS
