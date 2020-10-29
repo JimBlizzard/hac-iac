@@ -100,3 +100,30 @@ az deployment group create \
   --parameters storageSKU=Standard_AAA storageName="blizzstg00002"
 
 ```
+
+4. Add template functions
+
+Docs are here: <https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-add-functions?tabs=azure-cli>
+
+```bash azure cli
+# create variables
+rgName="00000-blizz-tutorials-rg"
+location="centralus"
+
+echo $rgName
+echo $location
+
+# create resource group
+az group create \
+  --name $rgName \
+  --location $location
+
+templateFile="~/repos/hack-iac/arm-templates/tutorials/beginner-templates/azuredeploy.4.json"
+
+az deployment group create \
+  --name addlocationparameter \
+  --resource-group $rgName \
+  --template-file $templateFile \
+  --parameters storageName="blizzstg00001"
+
+```
