@@ -85,4 +85,18 @@ az deployment group create \
   --template-file $templateFile \
   --parameters storageName="blizzstg00001"
 
+# change the storageSKU while creating a new storage account
+az deployment group create \
+  --name differentstoragesku \
+  --resource-group $rgName \
+  --template-file $templateFile \
+  --parameters storageSKU=Standard_GRS storageName="blizzstg00002"
+
+# try to use an invalid storageSKU
+az deployment group create \
+  --name invalidstoragesku \
+  --resource-group $rgName \
+  --template-file $templateFile \
+  --parameters storageSKU=Standard_AAA storageName="blizzstg00002"
+
 ```
